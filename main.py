@@ -20,8 +20,8 @@ svg_svg.setAttribute('xmlns', "http://www.w3.org/2000/svg")
 svg_svg.setAttribute('xmlns:xlink', "http://www.w3.org/1999/xlink")
 svg_svg.setAttribute('x', "0px")
 svg_svg.setAttribute('y', "0px")
-svg_svg.setAttribute('viewBox', "0 0 " + drawable_vector.getAttribute('android:viewportWidth') + " " + drawable_vector.getAttribute('android:viewportHeight'))
-svg_svg.setAttribute('enable-background', "new 0 0 " + drawable_vector.getAttribute('android:viewportWidth') + " " + drawable_vector.getAttribute('android:viewportHeight'))
+svg_svg.setAttribute('width', drawable_vector.getAttribute('android:viewportWidth'))
+svg_svg.setAttribute('height', drawable_vector.getAttribute('android:viewportHeight'))
 svg_svg.setAttribute('xml:space', "preserve")
 svg.appendChild(svg_svg)
 
@@ -33,7 +33,6 @@ for drawable_path in drawable_paths :
     svg_path.setAttribute('stroke-width', drawable_path.getAttribute('android:strokeWidth'))
     svg_path.setAttribute('stroke-miterlimit', drawable_path.getAttribute('android:strokeMiterLimit'))
     svg_svg.appendChild(svg_path)
-
 
 svg.writexml(sys.stdout, indent='\t', addindent='\t', newl='\n', encoding="utf-8")
 
