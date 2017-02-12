@@ -6,7 +6,6 @@ if len(sys.argv) < 2:
     print ('参数错误')
     sys.exit()
 
-#from xml.dom.minidom import parse
 import xml.dom.minidom
 
 
@@ -22,15 +21,11 @@ svg_svg.setAttribute('xmlns:xlink', "http://www.w3.org/1999/xlink")
 svg_svg.setAttribute('x', "0px")
 svg_svg.setAttribute('y', "0px")
 svg_svg.setAttribute('viewBox', "0 0 " + drawable_vector.getAttribute('android:viewportWidth') + " " + drawable_vector.getAttribute('android:viewportHeight'))
-#svg_svg.setAttribute('enable-background', "new 0 0 " + drawable_vector.getAttribute('android:viewportWidth') + " " + drawable_vector.getAttribute('android:viewportHeight'))
+svg_svg.setAttribute('enable-background', "new 0 0 " + drawable_vector.getAttribute('android:viewportWidth') + " " + drawable_vector.getAttribute('android:viewportHeight'))
 svg_svg.setAttribute('xml:space', "preserve")
 svg.appendChild(svg_svg)
-# print (drawable_vector.getAttribute('android:viewportWidth'))
-# print (drawable_vector.getAttribute('android:viewportHeight'))
 
 for drawable_path in drawable_paths :
-    # print (drawable_path.getAttribute('android:pathData'))
-    # print (drawable_path.getAttribute('android:fillColor'))
     svg_path = svg.createElement('path')
     svg_path.setAttribute('d', drawable_path.getAttribute('android:pathData'))
     svg_path.setAttribute('fill', drawable_path.getAttribute('android:fillColor'))
