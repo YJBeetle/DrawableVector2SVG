@@ -3,11 +3,10 @@
 import sys
 
 if len(sys.argv) < 2:
-    print ('参数错误')
+    print ('缺少输入文件')
     sys.exit()
 
 import xml.dom.minidom
-
 
 drawable = xml.dom.minidom.parse(sys.argv[1])
 drawable_vector = drawable.documentElement
@@ -34,5 +33,13 @@ for drawable_path in drawable_paths :
     svg_path.setAttribute('stroke-miterlimit', drawable_path.getAttribute('android:strokeMiterLimit'))
     svg_svg.appendChild(svg_path)
 
-svg.writexml(sys.stdout, indent='\t', addindent='\t', newl='\n', encoding="utf-8")
+if len(sys.argv) < 3:
+    outfp=sys.stdout
+else:
+    outfp=open(sys.argv[2], 'w')
 
+svg.writexml(outfp, indent='\t', addindent='\t', newl='\n', encoding="utf-8")
+
+if len(sys.argv) >= 3:
+    outfp.close
+    print ('完毕')
