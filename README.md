@@ -8,3 +8,6 @@ Vector类型的Drawable转换到SVG
 或
 
 ./DrawableVector2SVG test/googleplus.xml test/googleplus.svg
+
+反向的话。。。
+https://github.com/inloop/svg2android
